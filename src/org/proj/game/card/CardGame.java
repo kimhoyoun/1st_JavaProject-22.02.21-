@@ -390,7 +390,7 @@ public class CardGame extends GameView {
 					public void actionPerformed(ActionEvent e) {
 						if (GameState == MiniGame) {
 
-							if (gameNum == endGameNum) {
+							if (gameNum == cardendNum) {
 								resultPane.display();
 							} else {
 								Controller c = Controller.getController();

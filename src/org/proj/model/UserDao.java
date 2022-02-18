@@ -13,7 +13,7 @@ import org.proj.db.ConnectionDB;
 public class UserDao {
 	// user table의 모든 데이터 갖고오기
 //	public static final String SELECT_ALL = "SELECT * FROM USER";
-	public static final String SELECT_ALL = "select * from user";
+	public static final String SELECT_ALL = "SELECT * FROM USER ORDER BY no";
 	// user table에서 한명의 모든 정보를 가져옴
 	public static final String SELECT_ONE = "SELECT * FROM USER WHERE ID = ?";
 	// 새로운 user가 회원가입을 하면 새로운 유저값을 user table에 저장

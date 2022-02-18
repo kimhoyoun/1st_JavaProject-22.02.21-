@@ -2,18 +2,13 @@ package org.proj.game.cup;
 
 import static org.proj.Resource.MainPage;
 import static org.proj.Resource.MiniGame;
-import static org.proj.Resource.PlusMinus;
 import static org.proj.Resource.bgm;
 import static org.proj.Resource.endGameNum;
 import static org.proj.Resource.gameNum;
 import static org.proj.Resource.gametrue;
-import static org.proj.Resource.nextGameNum;
 import static org.proj.Resource.resultPane;
-import static org.proj.Resource.CARD;
 import static org.proj.Resource.CUP;
 import static org.proj.Resource.LIFE;
-import static org.proj.Resource.FRAME_HEIGHT;
-import static org.proj.Resource.FRAME_WIDTH;
 import static org.proj.Resource.GameState;
 
 import java.awt.Color;

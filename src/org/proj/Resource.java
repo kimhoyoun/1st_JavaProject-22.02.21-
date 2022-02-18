@@ -71,8 +71,8 @@ public class Resource {
 	public static boolean updateBtnStatedb = false;
 	public static int gameNum =0;
 	public static int gametrue=0;
-	public static int endGameNum = 2;
-	public static int nextGameNum = 2;
+	public static int endGameNum = 5;
+	public static int cardendNum = 2;
 	
 	// 게임이 개별게임인지 종합게임인지 판단 초기값 미니게임
 	public static final String MiniGame = "minigame";

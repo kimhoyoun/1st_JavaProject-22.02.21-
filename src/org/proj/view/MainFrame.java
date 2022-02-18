@@ -4,6 +4,7 @@ import static org.proj.Resource.*;
 
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -28,12 +29,22 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		position();
 		contentPane = getContentPane();
 		contentPane.setLayout(null);
-
+		
 		displayView(LoginView);
 		
 		bgm.Play("main.wav", true);
+	}
+	public void position() {
+		Toolkit tk = this.getToolkit().getDefaultToolkit();
+		int scrWidth = (int)tk.getScreenSize().getWidth();
+		int scrHeight = (int)tk.getScreenSize().getHeight();
+		
+		int x = scrWidth/2 - FRAME_WIDTH/2-200;
+		int y = scrHeight/2 - FRAME_HEIGHT/2;
+		this.setLocation(x,y);
 	}
 	
 	public void displayView(GameView gc) {

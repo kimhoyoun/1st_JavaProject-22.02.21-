@@ -1,5 +1,7 @@
 package org.proj.server;
 
+import static org.proj.Resource.FRAME_HEIGHT;
+import static org.proj.Resource.FRAME_WIDTH;
 import static org.proj.Resource.IDCHECK;
 import static org.proj.Resource.LOGIN;
 import static org.proj.Resource.LOGOUT;
@@ -13,6 +15,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -49,7 +52,7 @@ public class GameServer extends JFrame {
 	public GameServer() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("서버");
-		setSize(500, 600);
+		setSize(500, 768);
 
 		rightPane = new JPanel();
 		rightPane.setBackground(Color.white);
@@ -79,13 +82,23 @@ public class GameServer extends JFrame {
 		contentPane.add(new JScrollPane(rightPane, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.EAST);
 		setVisible(true);
-		this.setLocation(500, 200);
-
+//		this.setLocation(500, 200);
+		position();
 		// 서버 쓰레드 동작
 		ConnectClient connect = new ConnectClient();
 		connect.start();
 	}
-
+	
+	public void position() {
+		Toolkit tk = this.getToolkit().getDefaultToolkit();
+		int scrWidth = (int)tk.getScreenSize().getWidth();
+		int scrHeight = (int)tk.getScreenSize().getHeight();
+		
+		int x = scrWidth/2 + 350;
+		int y = scrHeight/2 - 768/2;
+		this.setLocation(x,y);
+	}
+	
 	public void loginUpdate(String user) {
 		for (int i = 0; i < dao.userVector.size(); i++) {
 			if (user.equals(idArr[i].getText())) {
@@ -114,9 +127,9 @@ public class GameServer extends JFrame {
 
 	public void addUserList(UserDto user) {
 		int size = dao.userVector.size();
-		pArr[size - 1] = new JPanel();
+		pArr[size - 1] = new JPanel(new GridLayout(1, 2));
 		pArr[size - 1].setBackground(Color.white);
-		idArr[size - 1] = new JLabel(dao.userVector.get(size - 1).getId());
+		idArr[size - 1] = new JLabel(dao.userVector.get(size-1).getId(),javax.swing.SwingConstants.CENTER);
 		idArr[size - 1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		loginStateArr[size - 1] = new JLabel("비접속");
 		loginStateArr[size - 1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
