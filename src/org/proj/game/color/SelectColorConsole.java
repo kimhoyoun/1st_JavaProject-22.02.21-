@@ -27,20 +27,17 @@ public class SelectColorConsole {
 	// 숫자를 글자로 바꾸기위한 변수
 	static int num;
 	static int num1;
-//	static Scanner scan = new Scanner(System.in);
 
 	// 글자 함수
 	// 글자(=정답)를 정해주기위한 함수이다
 	public String colorTxt() {
 		for (int i = 0; i < 1; i++) {
 			arrTxt[i] = (int) (Math.random() * 7);
-//			System.out.println("arrTxt[i] " + arrTxt[i]);
 			ansColor = arrTxt[i];
 		}
 		
 		// 콘솔창에 찍히는 부분으로 필요없어서 주석처리
 		// 숫자를 글자로(한국어)
-//		System.out.print("글자 : ");
 		num = ansColor;
 		numToColorKor(num);
 		return numToColorKor(num);
@@ -59,21 +56,12 @@ public class SelectColorConsole {
 		num1 = paintColor;
 		return col[num1];
 		
-		// 콘솔창에 찍히는 부분으로 필요없어서 주석처리
-		// 숫자를 글자로
-//		System.out.println(paintColor);
-//		System.out.print("글자 색 : ");
-//		num = paintColor;
-//		numToColor();
 	}
 
 	// 위치선정 함수
 	// 글자함수에서 나온 정답의 위치를 정해주기위한 함수이다
 	public void location() {
 		ansLoc = (int) (Math.random() * 3); // 저장위치 랜덤 돌리기
-//		System.out.println("ansLoc : " + ansLoc); // 저장위치 확인 용도
-		System.out.println("정답위치 : " + ansLoc);
-
 		arrBtn[ansLoc] = ansColor;
 	}
 
@@ -102,39 +90,9 @@ public class SelectColorConsole {
 					break;
 				}
 			}
-//			num = otherColor;
-//			numToColor();
 		}
 
-		// 콘솔창에 찍히는 부분으로 필요없어서 주석처리
-		// 결정된 버튼을 출력해주기
-		// 숫자를 글자로
-//		System.out.print("보기 : ");
-//		for (int i = 0; i < arrBtn.length; i++) {
-//			System.out.print(arrBtn[i] + ":");
-//			num = arrBtn[i];
-//			numToColor();
-//		}
 	}
-	
-	// 숫자를 글자(영어)로 바꾸는 함수
-//	public String numToColor() {
-//		if(num == 0) {
-//			return "RED";
-//		} else if(num == 1) {
-//			return "ORANGE";
-//		} else if(num == 2) {
-//			return "YELLOW";
-//		} else if(num == 3) {
-//			return "GREEN";
-//		} else if(num == 4) {
-//			return "BLUE";
-//		} else if(num == 5) {
-//			return "PINK";
-//		} else  {
-//			return "MAGENTA";
-//		}
-//	}
 	
 	// 숫자를 글자(한국어)로 바꾸는 함수
 	public String numToColorKor(int num) {
@@ -168,18 +126,6 @@ public class SelectColorConsole {
 		// 버튼이 실행되는 부분
 		button();
 		
-		// 콘솔창에 찍히는 부분으로 필요없어서 주석처리
-		// 정답 받기
-//		System.out.print("정답 : ");
-//		int answer = scan.nextInt();
-		
-		// 콘솔창 확인용
-		// 우리는 swing으로 마우스 이벤트로 정답을 고르기 때문에 별로 신경 안써도된당~
-//		if(answer == ansLoc) {
-//			System.out.println("정답입니다~!!");
-//		} else {
-//			System.out.println("오답입니다ㅜ");
-//		}
 	}
 	
 }

@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 import org.proj.RoundJButton;
 import org.proj.controller.Controller;
 
-
 public class RecordView extends GameView{
 	ImageIcon backgroundImg;
 	JLabel background;

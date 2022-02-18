@@ -45,13 +45,11 @@ public class GamePlayMain {
 	
 	public int[] makeSelection(int ans) {
 		int choice = (int)((Math.random()*100000)%4); // 4개의 선지의 위치를 랜덤으로 하기 위해서
-		int index = 0;
 		int[] ansArr = new int[4];
 		
 		for (int i = 0; i < 4; i++) {
 			if (choice == i) {
 				ansArr[i] = ans;
-				index = i;
 			} else {
 				ansArr[i] = (int) (Math.random() * 1000 % 35);
 				if (ansArr[i] == ans) { // 정답 중복제거

@@ -240,8 +240,6 @@ public class CardGame extends GameView {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println("timer");
-
 				openCount = 0;
 
 				Btn[buttonIndexSave1].setIcon(chageImage("card_Leaf.png"));
@@ -327,7 +325,6 @@ public class CardGame extends GameView {
 			}
 
 			int index = getIndex(btn);
-			System.out.println("index " + index);
 			btn.setIcon(chageImage(img[index]));
 
 			openCount++;

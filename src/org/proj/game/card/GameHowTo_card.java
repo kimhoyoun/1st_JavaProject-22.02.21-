@@ -65,21 +65,18 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 
 		font1 = new Font("맑은 고딕", Font.PLAIN, 24);
 
-//		next = new JButton("다음");
 		next = new JButton(new ImageIcon("images/comm/HowTo_right.png"));
 		next.setFocusPainted(false);
 		next.setBorderPainted(false);
 		next.setContentAreaFilled(false);
 		next.setBounds(720, 230, 80, 80);
 
-//		prev = new JButton("이전");
 		prev = new JButton(new ImageIcon("images/comm/HowTo_left.png"));
 		prev.setFocusPainted(false);
 		prev.setBorderPainted(false);
 		prev.setContentAreaFilled(false);
 		prev.setBounds(25, 230, 80, 80);
 
-//		exit = new JButton("종료");
 		exit = new JButton(new ImageIcon("images/comm/HowTo_exit.png"));
 		exit.setFocusPainted(false);
 		exit.setBorderPainted(false);
@@ -92,7 +89,7 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 		soundBtn.setContentAreaFilled(false);
 		soundBtn.setBounds(20, 20, 80, 80);
 
-		prev.setVisible(false); // 수정 (추가)
+		prev.setVisible(false); 
 		bgSkPan.add(soundBtn);
 		bgSkPan.add(next);
 		bgSkPan.add(prev);

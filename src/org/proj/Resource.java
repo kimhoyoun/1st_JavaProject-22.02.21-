@@ -5,7 +5,6 @@ import java.util.Vector;
 import javax.swing.JLabel;
 
 import org.proj.game.card.CardGame;
-import org.proj.game.color.ColorGame;
 import org.proj.game.color.MaxColorPanel;
 import org.proj.game.color.SelectColorPanel;
 import org.proj.game.cup.CupGamePanel;
@@ -74,6 +73,7 @@ public class Resource {
 	public static int gametrue=0;
 	public static int endGameNum = 2;
 	public static int nextGameNum = 2;
+	
 	// 게임이 개별게임인지 종합게임인지 판단 초기값 미니게임
 	public static final String MiniGame = "minigame";
 	public static final String AllGame = "alllgame";
@@ -84,63 +84,9 @@ public class Resource {
 	public static UserDto mainUser;
 	public static GameDataDto mainGameData;
 	public static Vector<GameDataDto> mainData;
-	
 	public static GameView resultPane = new GameEndPane();
 	
-//	public static JPanel gameResultPane = new JPanel();
-//	
-//	
-//	// login View
-//	
-//	public static JButton LoginBtn = new JButton("로그인");
-//	public static JButton signupBtn = new JButton("회원가입");
-//	public static JTextField inputID = new JTextField(15);
-//	public static JTextField inputPW = new JTextField(15);
-//	
-//	public static JTextField textname = new JTextField(20);
-//	public static JTextField textid = new JTextField(15);
-//	public static JTextField textpass = new JTextField(15);
-//	public static JTextField textage = new JTextField(15);
-//	public static JButton idcheck = new JButton("check");
-//	public static JButton signup = new JButton("확인");
-//	public static JButton cancel = new JButton("취소");
-//
-//	// MainView
-//	public static JButton pulusminusGameBtn = new RoundJButton("PlusMinus");
-//	public static JButton cardGameBtn = new RoundJButton("Card");
-//	public static JButton ballGameBtn = new RoundJButton("Ball");
-//	public static JButton lifeGameBtn = new RoundJButton("Life");
-//	public static JButton colorGameBtn = new RoundJButton("Color");
-//	public static JButton recordBtn = new RoundJButton("Record");
-//	public static JButton exitBtn = new RoundJButton("Exit");
-//	
-//	public static JButton profileOkBtn = new JButton("수정");
-//	public static String userIddb;
-//	public static String userNamedb;
-//	public static String userPassdb;
-//	public static int userAgedb; 
-//	public static JLabel idtagdb;
-//	public static JLabel infotagdb;
-//	
-//	
-//	// RecordView
-//	public static JButton pulusminusRecordBtn = new RoundJButton("PlusMinus");
-//	public static JButton cardRecordBtn = new RoundJButton("Card");
-//	public static JButton ballRecordBtn = new RoundJButton("Ball");
-//	public static JButton lifeRecordBtn = new RoundJButton("Life");
-//	public static JButton colorRecordBtn = new RoundJButton("Color");
-//	public static JButton backBtn = new RoundJButton("Back");
-//	
-//	// PlusMinusGame
-//	public static ImageIcon pauseIcon = new ImageIcon("images/pause.png");
-//	public static JButton pauseBtn =new JButton(pauseIcon);
-//	
-//	
-//	public static JButton goMainBtn = new JButton("메인화면으로");
-//	public static JButton replayBtn = new JButton("다시시작");
-//	
 //	// View
-//	
 	public static GameView NowView;
 	public static GameView LoginView = new LoginView();
 	public static GameView MainView = new MainView();	
@@ -152,18 +98,6 @@ public class Resource {
 	public static GameView SelectColorGame = new SelectColorPanel();
 	public static GameView MaxColorGame = new MaxColorPanel();
 	public static GameView GameRecord = new GameRecordView();
-	public static ColorGame RandomColorGame = new ColorGame();
-//	
-////	public static GameContainer PlusMinisRecord = new PlusMinusRecordView();
-//	public static GameContainer PlusMinisRecord;
-//	
-//	
-//	public static void viewCreate() {
-//		MAINVIEW = new MainView();
-//		RECORDVIEW = new RecordView();
-//		PlusMinusGAME = new PlusMinus();
-//		PlusMinisRecord = new PlusMinusRecordView();
-//	}
 }
 
 

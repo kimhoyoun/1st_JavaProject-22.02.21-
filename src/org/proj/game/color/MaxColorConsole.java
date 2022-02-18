@@ -46,11 +46,6 @@ public class MaxColorConsole {
 		
 		MaxAns();
 
-		// 갯수 확인
-		System.out.println("RED의 개수 : " + c0);
-		System.out.println("BLUE의 개수 : " + c1);
-		System.out.println("YELLOW의 개수 : " + c2);
-
 	}
 	
 	public void MaxAns() {
@@ -67,7 +62,6 @@ public class MaxColorConsole {
 			max = c2;
 			ans = "YELLOW";
 		}
-//		System.out.println("정답 : " + ans);
 	}
 
 	// 배열 만들고 갯수 세기
@@ -92,10 +86,6 @@ public class MaxColorConsole {
 					color = col[2];
 					c2++;
 				}
-//				System.out.print(arr[i]);
-//			}
-//			System.out.println(" ");
 		}
-//		return color;
 	}
 }

@@ -101,24 +101,4 @@ public class UserDto implements Serializable {
 		return no + "\t" + name + "\t" + id + "\t" + age;
 	}
 
-//	@Override
-//	public void writeExternal(ObjectOutput out) throws IOException {
-//		out.writeUTF(name);
-//		out.writeUTF(id);
-//		out.writeUTF(password);
-//		out.write(age);
-//	}
-//
-//	@Override
-//	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-//		no = in.read();
-//		name = in.readUTF();
-//		id = in.readUTF();
-//		password = in.readUTF();
-//		age = in.read();
-//	}
-	
-	
-	
-
 }

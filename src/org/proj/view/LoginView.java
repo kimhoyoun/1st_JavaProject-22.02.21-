@@ -24,7 +24,7 @@ import org.proj.RoundJButton;
 import org.proj.controller.Controller;
 import org.proj.model.UserDto;
 
-public class LoginView extends GameView{
+public class LoginView extends GameView {
 	boolean flag = false;
 	ImageIcon backgroundImg;
 	JLabel background;
@@ -37,12 +37,10 @@ public class LoginView extends GameView{
 	JButton signupBtn = new RoundJButton("회원가입");
 	ImageIcon passIcon = new ImageIcon("images/login/eye.png");
 	JToggleButton passLookBtn = new JToggleButton(passIcon);
-	
+
 	JTextField inputID = new JTextField(15);
-//	JTextField inputPW = new JTextField(15);
-	// 02.10 변경
 	JPasswordField inputPW = new JPasswordField(15);
-	
+
 	JTextField textname = new JTextField(20);
 	JTextField textid = new JTextField(15);
 	JTextField textpass = new JTextField(15);
@@ -53,7 +51,6 @@ public class LoginView extends GameView{
 	boolean signupState = false;
 
 	public LoginView() {
-//		display();
 		LoginBtn.addActionListener(this);
 		signupBtn.addActionListener(this);
 		passLookBtn.addActionListener(this);
@@ -75,13 +72,6 @@ public class LoginView extends GameView{
 
 		background.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
 		loginbg.setBounds(FRAME_WIDTH / 2 - 320 / 2, FRAME_HEIGHT / 2 - 370 / 2, 320, 370);
-//		login.setBounds(FRAME_WIDTH/2-300/2, FRAME_HEIGHT/2-350/2, 300, 350);
-
-//		LoginBtn.addActionListener(this);
-//		signupBtn.addActionListener(this);
-//		signup.addActionListener(this);
-//		cancel.addActionListener(this);
-//		idcheck.addActionListener(this);
 	}
 
 	public void init() {
@@ -114,12 +104,12 @@ public class LoginView extends GameView{
 		loginLabel.setBounds(300 / 2 - 50, 20, 100, 40);
 		loginID.setBounds(300 / 2 - 120, 350 / 2 - 80, 40, 40);
 		loginPW.setBounds(300 / 2 - 120, 350 / 2 - 20, 40, 40);
-		
+
 		inputPW.setEchoChar('*');
-		
+
 		inputID.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		inputPW.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		
+
 		login.add(passLookBtn);
 		login.add(inputID);
 		login.add(inputPW);
@@ -128,8 +118,7 @@ public class LoginView extends GameView{
 		loginbg.add(login);
 
 		login.setBounds(10, 10, 300, 350);
-		
-		
+
 		LoginBtn.setBackground(new Color(82, 206, 105));
 		LoginBtn.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		LoginBtn.setForeground(Color.white);
@@ -141,12 +130,12 @@ public class LoginView extends GameView{
 		signupBtn.setForeground(Color.white);
 		signupBtn.setBorderPainted(false);
 		signupBtn.setContentAreaFilled(false);
-		
+
 		// 02.10 변경
 		passLookBtn.setSelected(false);
 		passLookBtn.setBorderPainted(false);
 		passLookBtn.setContentAreaFilled(false);
-		passLookBtn.setBounds(260,160,30,30);
+		passLookBtn.setBounds(260, 160, 30, 30);
 
 		LoginBtn.setBounds(300 / 2 - 140, 350 - 60, 120, 50);
 		signupBtn.setBounds(300 / 2 + 10, 350 - 60, 120, 50);
@@ -191,7 +180,6 @@ public class LoginView extends GameView{
 		newUserPane.add(textage);
 		newUserPane.add(signup);
 		newUserPane.add(cancel);
-//		loginbg.add(newUserPane);
 		newUserPane.setBounds(10, 10, 300, 350);
 
 		textname.setFont(new Font("맑은 고딕", Font.BOLD, 20));
@@ -210,9 +198,7 @@ public class LoginView extends GameView{
 
 		idcheck.setBackground(new Color(184, 218, 235));
 		idcheck.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-//		idcheck.setForeground(Color.white);
 		idcheck.setBorderPainted(false);
-//		idcheck.setContentAreaFilled(false);
 
 		signup.setBackground(new Color(82, 206, 105));
 		signup.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -232,8 +218,6 @@ public class LoginView extends GameView{
 
 		if (e.getSource() == LoginBtn) {
 			String id = inputID.getText();
-			// 02.10 변경
-//			String pw = inputPW.getText();
 			String pw = new String(inputPW.getPassword());
 
 			if (id.length() != 0 && pw.length() != 0) {
@@ -245,7 +229,8 @@ public class LoginView extends GameView{
 				c.login(user);
 
 			} else {
-				JOptionPane.showMessageDialog(this, new JLabel("ID와 PW를 모두 입력하세요!", javax.swing.SwingConstants.CENTER), "로그인",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(this, new JLabel("ID와 PW를 모두 입력하세요!", javax.swing.SwingConstants.CENTER),
+						"로그인", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 
@@ -255,9 +240,9 @@ public class LoginView extends GameView{
 				Controller c = Controller.getController();
 				c.idcheck(checkid);
 
-			}else {
-				JOptionPane.showMessageDialog(this, new JLabel("아이디를 입력해주세요.", 
-						javax.swing.SwingConstants.CENTER), "중복확인",JOptionPane.PLAIN_MESSAGE);
+			} else {
+				JOptionPane.showMessageDialog(this, new JLabel("아이디를 입력해주세요.", javax.swing.SwingConstants.CENTER),
+						"중복확인", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
 
@@ -271,8 +256,8 @@ public class LoginView extends GameView{
 				try {
 					newAge = Integer.parseInt(textage.getText());
 				} catch (NumberFormatException e0) {
-					JOptionPane.showMessageDialog(this,  new JLabel("나이는 숫자만 입력하세요!", 
-							javax.swing.SwingConstants.CENTER),"회원가입",JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(this, new JLabel("나이는 숫자만 입력하세요!", javax.swing.SwingConstants.CENTER),
+							"회원가입", JOptionPane.PLAIN_MESSAGE);
 				}
 
 				if (newName.length() != 0 && newId.length() != 0 && newPw.length() != 0
@@ -289,22 +274,22 @@ public class LoginView extends GameView{
 					}
 					signupState = false;
 				} else {
-					JOptionPane.showMessageDialog(this,  new JLabel("모든 정보를 입력해 주세요", 
-							javax.swing.SwingConstants.CENTER),"회원가입",JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(this, new JLabel("모든 정보를 입력해 주세요", javax.swing.SwingConstants.CENTER),
+							"회원가입", JOptionPane.PLAIN_MESSAGE);
 				}
 			} else {
-				JOptionPane.showMessageDialog(this,  new JLabel("ID 중복체크를 해주세요!", 
-						javax.swing.SwingConstants.CENTER),"회원가입",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(this, new JLabel("ID 중복체크를 해주세요!", javax.swing.SwingConstants.CENTER),
+						"회원가입", JOptionPane.PLAIN_MESSAGE);
 			}
 		}
-		if(e.getSource() == passLookBtn) {
-			if(passLookBtn.isSelected() == true) {
-				inputPW.setEchoChar((char)0);
-			}else {
+		if (e.getSource() == passLookBtn) {
+			if (passLookBtn.isSelected() == true) {
+				inputPW.setEchoChar((char) 0);
+			} else {
 				inputPW.setEchoChar('*');
 			}
 		}
-		
+
 		if (e.getSource() == signupBtn) {
 			loginbg.remove(login);
 			loginbg.add(newUserPane);
@@ -324,16 +309,19 @@ public class LoginView extends GameView{
 		}
 
 	}
-	
+
 	public void respidcheck(boolean approval) {
-		if(approval) {
+		if (approval) {
 			signupState = true;
-			JOptionPane.showMessageDialog(this, new JLabel("사용할 수 있는 아이디입니다!", javax.swing.SwingConstants.CENTER), "중복확인",JOptionPane.PLAIN_MESSAGE);
-		}else {
+			JOptionPane.showMessageDialog(this, new JLabel("사용할 수 있는 아이디입니다!", javax.swing.SwingConstants.CENTER),
+					"중복확인", JOptionPane.PLAIN_MESSAGE);
+		} else {
 			signupState = false;
-			JOptionPane.showMessageDialog(this, new JLabel("사용할 수 없는 아이디입니다!", javax.swing.SwingConstants.CENTER), "중복확인",JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(this, new JLabel("사용할 수 없는 아이디입니다!", javax.swing.SwingConstants.CENTER),
+					"중복확인", JOptionPane.PLAIN_MESSAGE);
 		}
 	}
+
 	public String toBGM() {
 		return "main.wav";
 	}

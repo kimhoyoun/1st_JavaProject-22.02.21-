@@ -11,11 +11,10 @@ public class ConnectionDB {
 		String port = "3306";
 		String db = "projdata"; 
 		String url = String.format("%s%s:%s/%s",protocol,ip,port,db);
-		String user = "proj";
+		String user = "root";
 		String password = "1234";
 		
 		try {
-			// 클래스파일 확장자 빼야됨.
 			Class.forName("org.mariadb.jdbc.Driver");
 			return DriverManager.getConnection(url, user, password);
 		} catch (ClassNotFoundException e) {

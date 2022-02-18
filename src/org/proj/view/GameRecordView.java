@@ -75,8 +75,6 @@ public class GameRecordView extends GameView {
 	}
 
 	public void displaySetting() {
-//		JLabel title = new JLabel("성적확인");
-//		title.setFont(new Font("맑은 고딕", Font.BOLD, 40));
 		graphPane = new JPanel();
 		graphPane.setLayout(null);
 		graphPane.setBackground(new Color(204, 236, 255, 150));
@@ -90,25 +88,17 @@ public class GameRecordView extends GameView {
 			graphPane.add(graph);
 			graph.setBounds(15, 15, 700, 400);
 			JLabel text = new JLabel();
-//			JTextPane text = new JTextPane();
-//			text.setEditable(false);
 			text.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 			text.setHorizontalAlignment(JLabel.CENTER);
 			textPane.add(text);
 			settingTextMsg(gameRecord, text, underAvg);
 			
-//			StyledDocument doc = text.getStyledDocument();
-//			SimpleAttributeSet center = new SimpleAttributeSet();
-//			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-//			doc.setParagraphAttributes(0, doc.getLength(), center, false);
-//			text.setText(String.format("%d대 하한치보다 %d번 미달 났습니다!", (mainUser.getAge() / 10) * 10, underAvg));
 			text.setBounds(15, 15, 700, 150);
 		} else {
 			notGraphsetting();
 
 		}
 
-//		background.add(title);
 		background.add(backBtn);
 		background.add(graphPane);
 		background.add(textPane);
@@ -116,7 +106,6 @@ public class GameRecordView extends GameView {
 		backBtn.setBorderPainted(false);
 		backBtn.setContentAreaFilled(false);
 
-//		title.setBounds(FRAME_WIDTH / 2 - 100, 20, 200, 40);
 		backBtn.setBounds(10, FRAME_HEIGHT - 150, 100, 100);
 		graphPane.setBounds(20, 60, 730, 430);
 		textPane.setBounds(200, 530, 730, 180);
@@ -269,18 +258,4 @@ public class GameRecordView extends GameView {
 	public String toBGM() {
 		return "main.wav";
 	}
-//	public static void main(String[] args) {
-//		JFrame frame = new JFrame("DrawGraph");
-//	    Container contentPane;
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	    frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-//		contentPane = frame.getContentPane();
-//		contentPane.setLayout(null);
-//	    GameRecordView pm = new GameRecordView();
-//	    pm.display();
-//	    
-//	    pm.setBounds(0, 0, FRAME_WIDTH, FRAME_HEIGHT);
-//	    contentPane.add(pm);
-//	    frame.setVisible(true);
-//	}
 }

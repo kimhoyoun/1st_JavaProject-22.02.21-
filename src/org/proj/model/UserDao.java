@@ -30,7 +30,7 @@ public class UserDao {
 	public static final String INSERT_DATA = "INSERT INTO GAMEDATA (id, ansgame1, totalgame1, ansgame2, totalgame2, ansgame3, totalgame3, ansgame4, totalgame4, ansgame5, totalgame5, DAY) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 	public static final String UPDATE_DATA = "UPDATE gamedata set ansgame1 = ? , totalgame1 = ?, ansgame2 = ?, totalgame2 = ?, ansgame3=?, totalgame3=?, ansgame4=?, totalgame4=?, ansgame5=?, totalgame5=? where id = ? and day = ?";
 	public static final String DELETE_DATA = "delete from gamedata where id =? ";
-	
+
 	public static Connection conn = null;
 	public static ResultSet rs = null;
 	public static Statement stmt = null;
@@ -39,17 +39,17 @@ public class UserDao {
 	public static Vector<UserDto> userVector = new Vector<>();
 	// key : userID, value : 날짜로 구분한 game별 정답률 저장할 HashMap
 	public static HashMap<String, Vector<GameDataDto>> userData = null;
-	
+
 	public UserDao() {
 		init();
 	}
-	
+
 	// 초기화 (database에 저장된 userData와 gameData를 읽어옴.
 	public void init() {
 		roadUser();
 		roadGameData();
 	}
-	
+
 	// 모든 user 정보 가져오기
 	public void roadUser() {
 		userVector = new Vector<>();
@@ -81,28 +81,28 @@ public class UserDao {
 			}
 		}
 	}
-	//SELECT_ONE = "SELECT * FROM USER WHERE ID = ?";
-	public UserDto selectOneUser (UserDto dto) {
+
+	// SELECT_ONE = "SELECT * FROM USER WHERE ID = ?";
+	public UserDto selectOneUser(UserDto dto) {
 		UserDto user = null;
 		conn = ConnectionDB.getConnection();
-		
+
 		try {
 			pstmt = conn.prepareStatement(SELECT_ONE);
 			pstmt.setString(1, dto.getId());
 			rs = pstmt.executeQuery();
-				
+
 			while (rs.next()) {
 				int no = rs.getInt(1);
 				String name = rs.getString(2);
 				String id = rs.getString(3);
 				String password = rs.getString(4);
 				int age = rs.getInt(5);
-				
-				user = new UserDto(no,name, id, password, age);
+
+				user = new UserDto(no, name, id, password, age);
 			}
-		
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -111,13 +111,12 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return user;
 	}
-	
+
 	// 새로운 user 회원가입 시 user 정보 추가
 	public boolean insertUser(UserDto dto) {
 		conn = ConnectionDB.getConnection();
@@ -138,7 +137,6 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -147,7 +145,6 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -174,7 +171,6 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -183,66 +179,64 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return false;
 	}
+
 	// user 정보 삭제
-		// DELETE = "DELETE FROM USER WHERE ID = ?";
-		public boolean deleteUser(UserDto dto) {
-			conn = ConnectionDB.getConnection();
+	// DELETE = "DELETE FROM USER WHERE ID = ?";
+	public boolean deleteUser(UserDto dto) {
+		conn = ConnectionDB.getConnection();
 
-			try {
-				pstmt = conn.prepareStatement(DELETE);
-				pstmt.setString(1, dto.getId());
-				int cnt = pstmt.executeUpdate();
+		try {
+			pstmt = conn.prepareStatement(DELETE);
+			pstmt.setString(1, dto.getId());
+			int cnt = pstmt.executeUpdate();
 
-				if (cnt == 0) {
-					conn.rollback();
-					return false;
-				} else {
-					return true;
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				try {
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						ConnectionDB.close(conn);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			return false;
-		}
-		// 로그인 승인
-		// 아이디 비밀번호 일치하는 객체가 있으면 true 반환
-		
-		public boolean loginApproval(UserDto dto) {
-			init();
-			if(userVector.contains(dto)) {
+			if (cnt == 0) {
+				conn.rollback();
+				return false;
+			} else {
 				return true;
 			}
-			return false;
-		}
-		
-		// ID 중복체크
-		public boolean checkID(String userID) {
-			init();
-			for(int i= 0; i<userVector.size(); i++) {
-				if(userID.equals(userVector.get(i).getId())){
-					return false;
-				}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					ConnectionDB.close(conn);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+		}
+		return false;
+	}
+
+	// 로그인 승인
+	// 아이디 비밀번호 일치하는 객체가 있으면 true 반환
+	public boolean loginApproval(UserDto dto) {
+		init();
+		if (userVector.contains(dto)) {
 			return true;
 		}
-		
+		return false;
+	}
+
+	// ID 중복체크
+	public boolean checkID(String userID) {
+		init();
+		for (int i = 0; i < userVector.size(); i++) {
+			if (userID.equals(userVector.get(i).getId())) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	// 모든 user의 gameData 읽어옴.
 	public void roadGameData() {
 		userData = new HashMap<>();
@@ -286,38 +280,38 @@ public class UserDao {
 	public Vector<GameDataDto> roadOneGameData(UserDto dto) {
 		conn = ConnectionDB.getConnection();
 
-			Vector<GameDataDto> vector = new Vector<>();
-			try {
-				pstmt = conn.prepareStatement(SELECT_DATA_ONE);
-				pstmt.setString(1, dto.getId());
-				rs = pstmt.executeQuery();
+		Vector<GameDataDto> vector = new Vector<>();
+		try {
+			pstmt = conn.prepareStatement(SELECT_DATA_ONE);
+			pstmt.setString(1, dto.getId());
+			rs = pstmt.executeQuery();
 
-				while (rs.next()) {
-					GameDataDto data = null;
-					int agame1 = rs.getInt(1);
-					int tgame1 = rs.getInt(2);
-					int agame2 = rs.getInt(3);
-					int tgame2 = rs.getInt(4);
-					int agame3 = rs.getInt(5);
-					int tgame3 = rs.getInt(6);
-					int agame4 = rs.getInt(7);
-					int tgame4 = rs.getInt(8);
-					int agame5 = rs.getInt(9);
-					int tgame5 = rs.getInt(10);
+			while (rs.next()) {
+				GameDataDto data = null;
+				int agame1 = rs.getInt(1);
+				int tgame1 = rs.getInt(2);
+				int agame2 = rs.getInt(3);
+				int tgame2 = rs.getInt(4);
+				int agame3 = rs.getInt(5);
+				int tgame3 = rs.getInt(6);
+				int agame4 = rs.getInt(7);
+				int tgame4 = rs.getInt(8);
+				int agame5 = rs.getInt(9);
+				int tgame5 = rs.getInt(10);
 
-					String day = rs.getString(11);
-					// GameDataDto 객체 만들고
-					data = new GameDataDto(dto.getId(), agame1, tgame1, agame2, tgame2, agame3, tgame3,
-							agame4, tgame4, agame5, tgame5, day);
-					// 벡터에 저장
-					vector.add(data);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+				String day = rs.getString(11);
+				// GameDataDto 객체 만들고
+				data = new GameDataDto(dto.getId(), agame1, tgame1, agame2, tgame2, agame3, tgame3, agame4, tgame4,
+						agame5, tgame5, day);
+				// 벡터에 저장
+				vector.add(data);
 			}
-			return vector;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-	
+		return vector;
+	}
+
 	// 게임 종료 시 게임data 입력
 	public boolean insertGameData(GameDataDto dto) {
 		conn = ConnectionDB.getConnection();
@@ -345,7 +339,6 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -354,21 +347,12 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return false;
 	}
-	
-	// String UPDATE_DATA = "UPDATE gamedata set
-	// ansgame1 = ? , totalgame1 = ?,
-	// ansgame2 = ?, totalgame2 = ?,
-	// ansgame3=?, totalgame3=?,
-	// ansgame4=?, totalgame4=?,
-	// ansgame5=?, totalgame5=?)
-	// where id = ? and day = ?)"
-	
+
 	public boolean updateGameData(GameDataDto dto) {
 		conn = ConnectionDB.getConnection();
 		try {
@@ -395,7 +379,6 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -404,15 +387,14 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		return false;
 	}
-	
-	//DELETE_DATA = "delete from gamedata where id =? ";
+
+	// DELETE_DATA = "delete from gamedata where id =? ";
 	public boolean deleteGameData(GameDataDto dto) {
 		conn = ConnectionDB.getConnection();
 		try {
@@ -428,7 +410,6 @@ public class UserDao {
 				return true;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -437,7 +418,6 @@ public class UserDao {
 				if (conn != null)
 					ConnectionDB.close(conn);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

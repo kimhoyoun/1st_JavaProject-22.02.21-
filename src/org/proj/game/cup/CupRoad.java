@@ -31,18 +31,6 @@ public class CupRoad {
 				cupRoadArr[i][j] = cupArr[j][i];
 			}
 		} // end of for문
-		
-		// 위치 보여주기 
-		for(int i = 0; i < cupRoadArr.length; i++) {
-			System.out.print("cup["+ i + "] : ");
-			for(int j = 0; j < cupRoadArr[i].length; j++) {
-				if( j == 9) {
-					break;
-				}
-				System.out.print(cupRoadArr[i][j] + " ");
-			}
-			System.out.println();
-		} // end of for문
 	}
 	
 }

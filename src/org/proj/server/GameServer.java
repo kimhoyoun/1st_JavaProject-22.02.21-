@@ -53,15 +53,15 @@ public class GameServer extends JFrame {
 
 		rightPane = new JPanel();
 		rightPane.setBackground(Color.white);
-		rightPane.setLayout(new GridLayout(20, 1,13,13));
+		rightPane.setLayout(new GridLayout(20, 1, 13, 13));
 		pArr = new JPanel[10];
 		idArr = new JLabel[10];
 		loginStateArr = new JLabel[10];
-		
+
 		for (int i = 0; i < dao.userVector.size(); i++) {
-			pArr[i] = new JPanel(new GridLayout(1,2));
+			pArr[i] = new JPanel(new GridLayout(1, 2));
 			pArr[i].setBackground(Color.white);
-			idArr[i] = new JLabel(dao.userVector.get(i).getId(),javax.swing.SwingConstants.CENTER);
+			idArr[i] = new JLabel(dao.userVector.get(i).getId(), javax.swing.SwingConstants.CENTER);
 			idArr[i].setFont(new Font("맑은 고딕", Font.BOLD, 13));
 			loginStateArr[i] = new JLabel("비접속");
 			loginStateArr[i].setFont(new Font("맑은 고딕", Font.BOLD, 13));
@@ -70,13 +70,14 @@ public class GameServer extends JFrame {
 
 			rightPane.add(pArr[i]);
 		}
-		rightPane.setPreferredSize(new Dimension(140,900));
+		rightPane.setPreferredSize(new Dimension(140, 900));
 		Container contentPane = getContentPane();
 		serverState = new JTextArea();
 		serverState.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		serverState.setEditable(false);
 		contentPane.add(new JScrollPane(serverState), BorderLayout.CENTER);
-		contentPane.add(new JScrollPane(rightPane, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.EAST);
+		contentPane.add(new JScrollPane(rightPane, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.EAST);
 		setVisible(true);
 		this.setLocation(500, 200);
 
@@ -96,10 +97,10 @@ public class GameServer extends JFrame {
 		repaint();
 
 	}
-	
+
 	public void logoutUpdate(String user) {
 		for (int i = 0; i < dao.userVector.size(); i++) {
-			if(user == null) {
+			if (user == null) {
 				return;
 			}
 			if (user.equals(idArr[i].getText())) {
@@ -110,24 +111,24 @@ public class GameServer extends JFrame {
 		revalidate();
 		repaint();
 	}
-	
+
 	public void addUserList(UserDto user) {
 		int size = dao.userVector.size();
-		pArr[size-1] = new JPanel();
-		pArr[size-1].setBackground(Color.white);
-		idArr[size-1] = new JLabel(dao.userVector.get(size-1).getId());
-		idArr[size-1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		loginStateArr[size-1] = new JLabel("비접속");
-		loginStateArr[size-1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		pArr[size-1].add(idArr[size-1]);
-		pArr[size-1].add(loginStateArr[size-1]);
+		pArr[size - 1] = new JPanel();
+		pArr[size - 1].setBackground(Color.white);
+		idArr[size - 1] = new JLabel(dao.userVector.get(size - 1).getId());
+		idArr[size - 1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		loginStateArr[size - 1] = new JLabel("비접속");
+		loginStateArr[size - 1].setFont(new Font("맑은 고딕", Font.BOLD, 13));
+		pArr[size - 1].add(idArr[size - 1]);
+		pArr[size - 1].add(loginStateArr[size - 1]);
 
-		rightPane.add(pArr[size-1]);
-		
+		rightPane.add(pArr[size - 1]);
+
 		revalidate();
 		repaint();
 	}
-	
+
 	public static void main(String[] args) {
 		new GameServer();
 	}
@@ -202,16 +203,13 @@ public class GameServer extends JFrame {
 					}
 
 				} catch (SocketException e) {
-//					e.printStackTrace();
 					stop = true;
 				} catch (IOException e) {
-//					e.printStackTrace();
 					stop = true;
 				}
 
 			}
 			try {
-				System.out.println("클라이언트 접속 해제");
 				serverState.append(guest + " >> disconnect" + "\n");
 				loginUser.remove(dto);
 				logoutUpdate(userID);
@@ -221,7 +219,6 @@ public class GameServer extends JFrame {
 					oos.close();
 
 			} catch (IOException e1) {
-//				e1.printStackTrace();
 			}
 
 		}
@@ -233,7 +230,7 @@ public class GameServer extends JFrame {
 				boolean approval = dao.updateUser(dto);
 
 				if (approval) {
-					
+
 					oos.writeUTF(resp);
 					oos.flush();
 					oos.writeUTF("complete");
@@ -293,7 +290,7 @@ public class GameServer extends JFrame {
 								userID = dto.getId();
 								serverState.append(userID + " >> Login Success! \n");
 								loginUpdate(userID);
-							} 
+							}
 						}
 					} else {
 						dto = new UserDto(0, null, null, null, 0);
@@ -323,7 +320,6 @@ public class GameServer extends JFrame {
 			String resp = SIGNUP;
 			try {
 				dto = (UserDto) ois.readObject();
-				System.out.println(dto);
 				boolean state = dao.insertUser(dto);
 				String date = LocalDate.now().toString();
 
@@ -388,7 +384,6 @@ public class GameServer extends JFrame {
 				loginUser.remove(dto);
 				logoutUpdate(userID);
 				serverState.append(userID + " >> Logout" + "\n");
-//				userID = null;
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (IOException e) {

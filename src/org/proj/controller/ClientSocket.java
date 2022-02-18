@@ -203,32 +203,6 @@ public class ClientSocket {
 			}
 		}
 
-//		private void newlogin() {
-//			try {
-//				UserDto user = (UserDto) ois.readObject();
-//
-//				if (user.getNo() != -1) {
-//					mainUser = user;
-//					mainData = new Vector<GameDataDto>();
-//					System.out.println(mainUser);
-//					System.out.println("vector size >> " + mainData.size());
-//
-//					// 정상로그인
-//					JOptionPane.showMessageDialog(NowView, "로그인 성공!");
-//					Controller c = Controller.getController();
-//					c.mainframe.changeView(new MainView());
-//				} else {
-//					// 로그인 실패
-//					mainUser = null;
-//					JOptionPane.showMessageDialog(NowView, "아이디와 비밀번호를 확인해 주세요!");
-//				}
-//			} catch (ClassNotFoundException e) {
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-
 		private void login() {
 			try {
 				UserDto user = (UserDto) ois.readObject();

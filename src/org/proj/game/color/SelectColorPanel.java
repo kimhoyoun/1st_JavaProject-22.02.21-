@@ -71,7 +71,6 @@ public class SelectColorPanel extends GameView{
 		
 		// 결과 알려주는 곳
 		this.add(resultPane);
-//		resultPane.setBounds(FRAME_WIDTH / 2 - 300 / 2, FRAME_HEIGHT / 2 - 350 / 2, 300, 350);
 		resultPane.setVisible(false);
 		
 		// 정지 버튼
@@ -219,20 +218,6 @@ public class SelectColorPanel extends GameView{
 				repaint();
 			}
 		}
-//		if (e.getSource() == btn1) {
-//			if (scc.ansColor == scc.arrBtn[0]) {
-//				gameNum++;
-//				gametrue++;
-//				checkLabel.setVisible(true);
-//				revalidate();
-//				repaint();
-//			} else {
-//				gameNum++;
-//				xLabel.setVisible(true);
-//				revalidate();
-//				repaint();
-//			}
-//		}
 		if ("btn2".equals(btn.getText())) {
 			if (scc.ansColor == scc.arrBtn[1]) {
 				bgm.playEffect("true.wav");

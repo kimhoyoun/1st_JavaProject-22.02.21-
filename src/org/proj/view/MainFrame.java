@@ -32,7 +32,6 @@ public class MainFrame extends JFrame{
 		contentPane.setLayout(null);
 
 		displayView(LoginView);
-//		bgm = new BGM();
 		
 		bgm.Play("main.wav", true);
 	}

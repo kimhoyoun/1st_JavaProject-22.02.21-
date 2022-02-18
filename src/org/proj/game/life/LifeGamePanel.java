@@ -67,8 +67,9 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 	GameHowTo_lg ght = new GameHowTo_lg();
 
 	LifeLabel[] label = new LifeLabel[4];
-	String[] s = new String[4];
+	String[] answerBox = new String[4];
 	int click;
+
 	public LifeGamePanel() {
 		pauseBtn.addActionListener(this);
 		howtoBtn.addActionListener(this);
@@ -106,7 +107,6 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 		this.setLayout(null);
 
 		this.add(resultPane);
-//		resultPane.setBounds(FRAME_WIDTH / 2 - 300 / 2, FRAME_HEIGHT / 2 - 350 / 2, 300, 350);
 		resultPane.setVisible(false);
 
 		pauseBtn.setBounds(920, 30, 50, 50);
@@ -134,7 +134,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 		bgImgPan.add(submit);
 		submit.addActionListener(this);
 
-		ght.setBounds(100, 100, 820, 530); // 추가
+		ght.setBounds(100, 100, 820, 530); 
 		bgImgPan.add(ght); // 추가
 		ght.exit.addActionListener(this);
 
@@ -147,7 +147,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 		this.add(xLabel);
 		xLabel.setVisible(false);
 
-		title = new JLabel(lgc.ArrLabel[lgc.k]);
+		title = new JLabel(lgc.cate);
 		title.setBounds(350, 30, 300, 80);
 		title.setBackground(Color.white);
 		Font font3 = new Font("맑은 고딕", Font.BOLD, 28);
@@ -167,7 +167,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 
 		// 문제
 		for (int i = 0; i < label.length; i++) {
-			label[i] = new LifeLabel(lgc.a[lgc.b[i]], 100, yArr[i], width, height);
+			label[i] = new LifeLabel(lgc.ansArr[lgc.showQuiz[i]], 100, yArr[i], width, height);
 			label[i].setHorizontalAlignment(JLabel.CENTER);
 			label[i].setFont(new Font("맑은 고딕", Font.BOLD, 24));
 			label[i].setOpaque(true);
@@ -187,7 +187,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 			ans[i].add(num);
 			bgImgPan.add(ans[i]);
 		}
-		
+
 		bgImgPan.add(howtoBtn);
 
 		life = new JLabel("도전횟수 : " + lifeRemaining);
@@ -200,7 +200,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 
 		this.add(bgImgPan);
 	}
-	
+
 	// 충돌검사
 	public void move(LifeLabel a, MouseEvent e, JPanel[] ans) {
 
@@ -217,7 +217,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 					ans[0].setEnabled(false);
 					ans[0].setBackground(Color.white);
 					a.setBounds(ans[0].getX(), ans[0].getY(), width, height);
-					s[0] = a.getText();
+					answerBox[0] = a.getText();
 					a.num = 1;
 					a.flag = false;
 					revalidate();
@@ -230,7 +230,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 				if (!(ans[1].getBackground() == Color.white)) {
 					ans[1].setBackground(Color.white);
 					a.setBounds(ans[1].getX(), ans[1].getY(), width, height);
-					s[1] = a.getText();
+					answerBox[1] = a.getText();
 					a.flag = false;
 					a.num = 2;
 					revalidate();
@@ -243,7 +243,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 				if (!(ans[2].getBackground() == Color.white)) {
 					ans[2].setBackground(Color.white);
 					a.setBounds(ans[2].getX(), ans[2].getY(), width, height);
-					s[2] = a.getText();
+					answerBox[2] = a.getText();
 					a.flag = false;
 					a.num = 3;
 					revalidate();
@@ -256,7 +256,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 				if (!(ans[3].getBackground() == Color.white)) {
 					ans[3].setBackground(Color.white);
 					a.setBounds(ans[3].getX(), ans[3].getY(), width, height);
-					s[3] = a.getText();
+					answerBox[3] = a.getText();
 					a.flag = false;
 					a.num = 4;
 					revalidate();
@@ -311,25 +311,25 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 				lifeLabel.setBounds(lifeLabel.x, lifeLabel.y, width, height);
 				lifeLabel.flag = false;
 				lifeLabel.num = 0;
-				s[0] = null;
+				answerBox[0] = null;
 				ans[0].setBackground(gray);
 			} else if (lifeLabel.num == 2) {
 				lifeLabel.setBounds(lifeLabel.x, lifeLabel.y, width, height);
 				lifeLabel.flag = false;
 				lifeLabel.num = 0;
-				s[1] = null;
+				answerBox[1] = null;
 				ans[1].setBackground(gray);
 			} else if (lifeLabel.num == 3) {
 				lifeLabel.setBounds(lifeLabel.x, lifeLabel.y, width, height);
 				lifeLabel.flag = false;
 				lifeLabel.num = 0;
-				s[2] = null;
+				answerBox[2] = null;
 				ans[2].setBackground(gray);
 			} else if (lifeLabel.num == 4) {
 				lifeLabel.setBounds(lifeLabel.x, lifeLabel.y, width, height);
 				lifeLabel.flag = false;
 				lifeLabel.num = 0;
-				s[3] = null;
+				answerBox[3] = null;
 				ans[3].setBackground(gray);
 			}
 			mouseX = e.getX();
@@ -354,11 +354,11 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 	public void mouseExited(MouseEvent e) {
 	}
 
-	int w = 0;
+	int answerCount = 0;
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(click == 1) {
+		if (click == 1) {
 			return;
 		}
 		if (e.getSource() == howtoBtn) {
@@ -374,7 +374,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 
 		if (e.getSource() == submit) {
 			for (int i = 0; i < 4; i++) {
-				if (s[i] == null) {
+				if (answerBox[i] == null) {
 					JOptionPane.showMessageDialog(this, new JLabel("빈칸이 있어요!", javax.swing.SwingConstants.CENTER), "알림",
 							JOptionPane.PLAIN_MESSAGE);
 					return;
@@ -382,12 +382,12 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 			}
 
 			for (int i = 0; i < 4; i++) {
-				if (s[i] == lgc.a[i]) {
-					w++;
+				if (lgc.ansArr[i].equals(answerBox[i])) {
+					answerCount++;
 				}
 			}
 
-			if (w == 4) {
+			if (answerCount == 4) {
 				click++;
 				bgm.playEffect("true.wav");
 				gameNum++;
@@ -395,16 +395,16 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 				checkLabel.setVisible(true);
 				revalidate();
 				repaint();
-				w = 0;
+				answerCount = 0;
 				label[0].num = 0;
 				label[1].num = 0;
 				label[2].num = 0;
 				label[3].num = 0;
-				s[0] = null;
-				s[1] = null;
-				s[2] = null;
-				s[3] = null;
-				
+				answerBox[0] = null;
+				answerBox[1] = null;
+				answerBox[2] = null;
+				answerBox[3] = null;
+
 				next();
 			} else {
 				lifeRemaining--;
@@ -420,14 +420,14 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 					JOptionPane.showMessageDialog(this, new JLabel("곰곰히 생각해보세요!", javax.swing.SwingConstants.CENTER),
 							"알림", JOptionPane.PLAIN_MESSAGE);
 				}
-				
-				for(int i =0; i<4; i++) {
-					label[i].num =0;
+
+				for (int i = 0; i < 4; i++) {
+					label[i].num = 0;
 					label[i].setBounds(label[i].x, label[i].y, width, height);
 					ans[i].setBackground(gray);
-					s[i] = null;
+					answerBox[i] = null;
 				}
-				w = 0;
+				answerCount = 0;
 				revalidate();
 				repaint();
 			}
@@ -479,7 +479,7 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 	public String toString() {
 		return LIFE;
 	}
-	
+
 	public String toBGM() {
 		return "life.wav";
 	}

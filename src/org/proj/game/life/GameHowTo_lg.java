@@ -79,7 +79,7 @@ public class GameHowTo_lg extends JPanel implements ActionListener {
 		soundBtn.setContentAreaFilled(false);
 		soundBtn.setBounds(20, 20, 80, 80);
 
-		prev.setVisible(false); // 수정 (추가)
+		prev.setVisible(false);
 		bgSkPan.add(soundBtn);
 		bgSkPan.add(next);
 		bgSkPan.add(prev);

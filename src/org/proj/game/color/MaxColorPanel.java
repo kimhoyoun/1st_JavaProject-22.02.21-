@@ -69,7 +69,6 @@ public class MaxColorPanel extends GameView{
 		this.setLayout(null);
 
 		this.add(resultPane);
-//		resultPane.setBounds(FRAME_WIDTH / 2 - 300 / 2, FRAME_HEIGHT / 2 - 350 / 2, 300, 350);
 		resultPane.setVisible(false);
 
 		pauseBtn.setBounds(920, 30, 50, 50);
@@ -198,7 +197,6 @@ public class MaxColorPanel extends GameView{
 		}
 
 		if ((e.getSource() instanceof JButton) && (e.getSource() != pauseBtn)) {
-			System.out.println("버튼");
 			click++;
 			gameNum++;
 			next();

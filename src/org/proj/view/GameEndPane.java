@@ -149,7 +149,6 @@ public class GameEndPane extends GameView {
 	}
 	@Override
 	public String toBGM() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

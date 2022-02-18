@@ -39,7 +39,6 @@ public class Controller {
 	MainFrame mainframe;
 	private static HashMap<String, GameView> map = new HashMap<>();
 	public ClientSocket clientsocket;
-//	UserDao dao;
 	static {
 		
 		map.put(LoginPage, LoginView);
@@ -57,7 +56,6 @@ public class Controller {
 	public Controller() {
 		mainframe = new MainFrame();
 		clientsocket = new ClientSocket();
-//		dao = new UserDao();
 	}
 	
 	public static Controller getController() {
@@ -73,7 +71,7 @@ public class Controller {
 	}
 	
 	public void login(UserDto dto) {
-		clientsocket.reqLogin(dto);
+		clientsocket.reqLogin(dto); 
 	}
 	public void update(UserDto dto) {
 		clientsocket.reqUpdate(dto);
