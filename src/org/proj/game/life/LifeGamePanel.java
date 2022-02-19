@@ -176,6 +176,11 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 			label[i].addMouseListener(this);
 			label[i].setBounds(label[i].x, label[i].y, width, height);
 			bgImgPan.add(label[i]);
+			if(howtoState) {
+				label[i].setVisible(false);
+			}else {
+				label[i].setVisible(true);
+			}
 		}
 
 		// 정답
@@ -364,12 +369,18 @@ public class LifeGamePanel extends GameView implements MouseListener, MouseMotio
 		if (e.getSource() == howtoBtn) {
 			ght.setVisible(true);
 			submit.setVisible(false);
+			for(int i = 0; i<label.length; i++) {
+				label[i].setVisible(false);
+			}
 		}
 
 		if (e.getSource() == ght.exit) {
 			howtoState = false;
 			submit.setVisible(true);
 			ght.setVisible(false);
+			for(int i = 0; i<label.length; i++) {
+				label[i].setVisible(true);
+			}
 		}
 
 		if (e.getSource() == submit) {
