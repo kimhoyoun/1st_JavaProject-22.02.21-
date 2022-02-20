@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -70,12 +71,12 @@ public class CardGame extends GameView {
 	
 	@Override
 	public void display() {
+		
 		end = false;
 		sucessCount = 0;
 		tryCount = 12;
 		startCount = 0;
 		this.add(resultPane);
-//		resultPane.setBounds(FRAME_WIDTH / 2 - 300 / 2, FRAME_HEIGHT / 2 - 350 / 2, 300, 350);
 		resultPane.setVisible(false);
 		
 		checkLabel = new JLabel(checkIcon);
@@ -139,7 +140,6 @@ public class CardGame extends GameView {
 			Btn[i].setFocusPainted(false);
 			Btn[i].setBorder(null);
 			Btn[i].setBackground(Color.white);
-//			Btn[i].addActionListener(this);
 			Btn[i].setIcon(chageImage("card_Leaf.png"));
 			Btn[i].setEnabled(false);
 			cardBack.add(Btn[i]);
@@ -281,15 +281,21 @@ public class CardGame extends GameView {
 		if(end) {
 			return;
 		}
+		
 		JButton btn = (JButton) e.getSource();
+		
 		if(e.getSource() == howtoBtn) {
-			ght.setVisible(true);
-			bottomBtn01.setVisible(false);
-
-			for(int i = 0; i < Btn.length; i++) {
+			if(!ght.getState()) {
+				
+				ght.setVisible(true);
+				bottomBtn01.setVisible(false);		
+				
+				for(int i = 0; i < Btn.length; i++) {				
 				Btn[i].setVisible(false);
+				}
 			}
 		}
+	
 		
 		if (e.getSource() == pauseBtn) { // 정지버튼
 			int yn = JOptionPane.showConfirmDialog(this,  new JLabel("게임을 종료하시겠습니까? ", javax.swing.SwingConstants.CENTER),"확인",JOptionPane.YES_NO_OPTION,JOptionPane.PLAIN_MESSAGE);

@@ -32,7 +32,8 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 	public JButton exit;
 	private JButton cardBtn;
 	private JButton[] Btn;
-
+	private boolean howtoState;
+	
 	private JToggleButton soundBtn;
 
 	private Font font1;
@@ -45,6 +46,7 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 		this.setBounds(100, 100, 820, 530);
 		this.cardBtn = cardBtn;
 		this.Btn = Btn;
+		this.howtoState = true;
 		cardBtn.setVisible(false);
 		comm();
 		first();
@@ -168,7 +170,14 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 		pan3.add(gameImgPan);
 		bgSkPan.add(pan3);
 	}
-
+	
+	public boolean getState() {
+		return howtoState;
+	}
+	public void setState(boolean state) {
+		this.howtoState = state;
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == prev) {
@@ -193,6 +202,7 @@ public class GameHowTo_card extends JPanel implements ActionListener {
 			}
 			soundBtn.setSelected(false);
 			cardBtn.setVisible(true);
+			howtoState = false;
 			for (int i = 0; i < Btn.length; i++) {
 				Btn[i].setVisible(true);
 			}
