@@ -27,6 +27,7 @@ import java.util.HashMap;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.proj.client.ClientSocket;
 import org.proj.model.GameDataDto;
 import org.proj.model.UserDao;
 import org.proj.model.UserDto;
@@ -36,7 +37,7 @@ import org.proj.view.MainFrame;
 
 public class Controller {
 	private static Controller controller;
-	MainFrame mainframe;
+	public MainFrame mainframe;
 	private static HashMap<String, GameView> map = new HashMap<>();
 	public ClientSocket clientsocket;
 	static {

@@ -140,6 +140,10 @@ public class GraphPanel extends JPanel {
 			g2.drawLine(x1, y1, x2, y2);
 		}
 		String str = age + "대 위험수준";
-		g2.drawString(str, graphPoints.get(graphPoints.size() - 2).x, (int) ((100 - ageData) * yScale + padding) - 4);
+		if(graphPoints.size()>10) {
+			g2.drawString(str, graphPoints.get(graphPoints.size() - 4).x, (int) ((100 - ageData) * yScale + padding) - 4);
+		}else {
+			g2.drawString(str, graphPoints.get(graphPoints.size() - 2).x, (int) ((100 - ageData) * yScale + padding) - 4);
+		}
 	}
 }

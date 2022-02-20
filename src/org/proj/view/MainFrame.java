@@ -29,6 +29,8 @@ public class MainFrame extends JFrame{
 	public MainFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		this.setTitle("치매 예방 게임");
+	
 		position();
 		contentPane = getContentPane();
 		contentPane.setLayout(null);

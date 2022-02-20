@@ -1,4 +1,4 @@
-package org.proj.controller;
+package org.proj.client;
 
 import static org.proj.Resource.*;
 
@@ -15,6 +15,7 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.proj.controller.Controller;
 import org.proj.model.GameDataDto;
 import org.proj.model.UserDto;
 import org.proj.view.MainView;
@@ -155,7 +156,6 @@ public class ClientSocket {
 			while (!stop) {
 				try {
 					String resp = ois.readUTF();
-					System.out.println("server response >> " + resp);
 					switch (resp) {
 					case LOGIN:
 						login();
